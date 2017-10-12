@@ -42,6 +42,8 @@ public class CalculatorTest{
 		assertEquals(7, Calculator.add("4,3"));
 		assertEquals(3, Calculator.add("2,1"));
 		assertEquals(2, Calculator.add("2"));
+		assertEquals(0, Calculator.add("0,0"));
+		assertEquals(0, Calculator.add("0"));
 	}
 
 
