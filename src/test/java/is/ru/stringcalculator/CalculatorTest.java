@@ -97,9 +97,32 @@ public class CalculatorTest{
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 
+	// ii and iii
+	// Example: "1,\n" is invalid.
+	// I only test correct inputs.
 
-
-
+	@Test
+	public void moreNewLinesTests(){
+		// The first test (the one that is commented) is invalid.
+		// It would be handled with an exception inside the 
+		// changeNewLinesToCommas method. 
+		// SEE changeNewLinesToCommas() for an explanation!
+		
+		//assertEquals(1, Calculator.add("1,\n"));
+		
+		assertEquals(3, Calculator.add("1\n2"));
+		assertEquals(3, Calculator.add("2\n1"));
+		assertEquals(7, Calculator.add("3\n4"));
+		assertEquals(3, Calculator.add("3\n0"));
+		assertEquals(4, Calculator.add("0\n4"));
+		assertEquals(0, Calculator.add("0\n0"));
+		assertEquals(12, Calculator.add("5\n4\n3"));
+		assertEquals(14, Calculator.add("5\n4\n3\n2"));
+		assertEquals(15, Calculator.add("5\n4\n3\n2\n1"));
+		assertEquals(15, Calculator.add("5\n4\n3\n2\n1\n0"));
+		assertEquals(15, Calculator.add("0\n1\n2\n3\n4\n5"));
+		assertEquals(0, Calculator.add("0\n0\n0\n0\n0\n0"));
+	}
 
 
 	

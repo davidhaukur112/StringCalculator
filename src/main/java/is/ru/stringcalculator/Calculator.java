@@ -48,7 +48,14 @@ public class Calculator{
 		// Replacement loop
 		for(int i=0;i<text.length();i++){
 			if(text.charAt(i) == '\n'){
-				characterArray[i] = ',';
+				if(characterArray[i-1] == ',' && i > 0){
+					// Here an exception would be thrown
+					// Because the string cannot have two commas in a row
+				}
+				else{
+					characterArray[i] = ',';
+				}
+				
 			}
 		}
 		
