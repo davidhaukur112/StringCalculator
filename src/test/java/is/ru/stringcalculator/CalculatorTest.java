@@ -12,11 +12,12 @@ public class CalculatorTest{
 	@Test
 	public void testOneNumber(){
 		assertEquals(1, Calculator.add("1"));
+		assertEquals(55, Calculator.add("55"));
 	}
 
 	@Test
 	public void testTwoNumber(){
-		assertEquals(3, Calculator.add("1,2"));
+		assertEquals(12, Calculator.add("5,7"));
 	}
 
 	// ii
@@ -26,6 +27,18 @@ public class CalculatorTest{
 	public void testEmptyString(){
 		assertEquals(0, Calculator.add(""));
 	}
+
+	// iii
+	// Example inputs: "", "1", or "1,2"
+	
+	@Test
+	public void someOtherTests(){
+		assertEquals(0, Calculator.add(""));
+		assertEquals(1, Calculator.add("1"));
+		assertEquals(3, Calculator.add("1,2"));
+
+	}
+
 
 
 
