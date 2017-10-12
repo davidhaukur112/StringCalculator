@@ -8,6 +8,14 @@ public class Calculator{
 		if(text.equals("")){
 			return 0;
 		}
+		
+		// If the string contains the newline symbol
+		if(text.contains("\n")){
+			// We run this method to change the newLines to commas.
+			String tempString = changeNewLinesToCommas(text);
+			text = tempString;
+		}
+
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
 			return sumUp(numbers);
@@ -31,4 +39,22 @@ public class Calculator{
 		}
 		return total;
 	}
+
+	// This method replaces the newlines (\n) with a comma.
+	private static String changeNewLinesToCommas(String text){
+		
+		char[] characterArray = text.toCharArray();
+		
+		// Replacement loop
+		for(int i=0;i<text.length();i++){
+			if(text.charAt(i) == '\n'){
+				characterArray[i] = ',';
+			}
+		}
+		
+		String withoutNewLines = new String(characterArray);
+		// A valid string is returned
+		return withoutNewLines;
+	}
+
 }

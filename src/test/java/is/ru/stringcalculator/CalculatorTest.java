@@ -85,7 +85,17 @@ public class CalculatorTest{
 	}
 
 
+	//   *** STEP 2 ***	
 
+	// Allow the Add method to handle new lines between numbers (instead of commas).
+	
+	// i
+	// Example: "1\n2,3" should return 6.
+
+	@Test
+	public void newLinesTest(){
+		assertEquals(6, Calculator.add("1\n2,3"));
+	}
 
 
 
