@@ -28,7 +28,7 @@ public class CalculatorTest{
 		assertEquals(0, Calculator.add(""));
 	}
 
-	// iii
+	// iii & iv (a few more test cases added)
 	// Example inputs: "", "1", or "1,2"
 	
 	@Test
@@ -36,7 +36,12 @@ public class CalculatorTest{
 		assertEquals(0, Calculator.add(""));
 		assertEquals(1, Calculator.add("1"));
 		assertEquals(3, Calculator.add("1,2"));
-
+		assertEquals(7, Calculator.add("3,4"));
+		assertEquals(11, Calculator.add("5,6"));
+		assertEquals(11, Calculator.add("6,5"));
+		assertEquals(7, Calculator.add("4,3"));
+		assertEquals(3, Calculator.add("2,1"));
+		assertEquals(2, Calculator.add("2"));
 	}
 
 
