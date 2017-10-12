@@ -4,6 +4,10 @@ public class Calculator{
 
 	public static int add(String text){
 
+		// If the string is empty, zero is returned
+		if(text.equals("")){
+			return 0;
+		}
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
 			return sumUp(numbers);
