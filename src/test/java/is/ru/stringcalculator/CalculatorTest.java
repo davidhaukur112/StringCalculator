@@ -252,4 +252,88 @@ public class CalculatorTest{
         }
 	}
 
+	@Test
+    public void moreNegativeTestsNine() {
+        try {
+            Calculator.add("1,-42");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -42");
+        }
+	}
+
+	//   *** STEP 5 ***
+
+	// Numbers bigger than 1000 should be ignored.
+	// Example: "1001,2" returns 2
+	
+	@Test
+	public void numbersLargerThanOneThousandTestOne(){
+		assertEquals(2, Calculator.add("1001,2"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestTwo(){
+		assertEquals(2, Calculator.add("2,1001"));
+	}
+	
+	@Test
+	public void numbersLargerThanOneThousandTestThree(){
+		assertEquals(2000, Calculator.add("1000,1000"));
+	}
+	
+	@Test
+	public void numbersLargerThanOneThousandTestFour(){
+		assertEquals(0, Calculator.add("1001,1001"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestFive(){
+		assertEquals(1000, Calculator.add("1000,0"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestSix(){
+		assertEquals(1000, Calculator.add("0,1000"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestSeven(){
+		assertEquals(0, Calculator.add("1001,0"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestEight(){
+		assertEquals(0, Calculator.add("0,1001"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestNine(){
+		assertEquals(1, Calculator.add("0,1001,1"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestTen(){
+		assertEquals(1, Calculator.add("1,1001,0"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestEleven(){
+		assertEquals(2, Calculator.add("1001,1,1"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestTwelve(){
+		assertEquals(2, Calculator.add("1,1,1001"));
+	}
+	
+	@Test
+	public void numbersLargerThanOneThousandTestThirteen(){
+		assertEquals(55, Calculator.add("1,2,3,4,5,6,5000,7,8,9,10"));
+	}
+
+	@Test
+	public void numbersLargerThanOneThousandTestFourteen(){
+		assertEquals(55, Calculator.add("9999,1,2,3,4,5,6,9999,7,8,9,10,9999"));
+	}
+
 }

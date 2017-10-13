@@ -23,13 +23,14 @@ public class Calculator{
 			negativeError(numbers);
 		}
 		
-		// Multiple Numbers
+		// Multiple Numbers.
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
 
 			return sumUp(numbers);
 		}
-
+		// A single number as input
+		// should be returned without changes.
 		return toInt(text);
 	}
 
@@ -39,14 +40,31 @@ public class Calculator{
 		return Integer.parseInt(number);
 	}
 
-	// This method sums up the numbers in the string array
-	// and returns the total.
+	// This method sums up all the numbers in the string array
+	// that are less than 1001 and returns the total.
 	private static int sumUp(String [] numbers){
 		int total = 0;
+		int value = 0;
 		for(String number : numbers){
-			total += toInt(number);
+			value = toInt(number);
+			// Numbers bigger than 1000 should be ignored.
+			if(numberIsLargerThanThousand(value)){
+				// We don't want to add this number to the total
+				// so we 
+				continue;
+			}
+			else{
+				total += toInt(number);
+			}
 		}
 		return total;
+	}
+
+	private static Boolean numberIsLargerThanThousand(int number){
+		if(number > 1000){
+			return true;
+		}			
+		return false;
 	}
 
 	// This method replaces the newlines (\n) with a comma.
@@ -64,7 +82,6 @@ public class Calculator{
 				else{
 					characterArray[i] = ',';
 				}
-				
 			}
 		}
 		
