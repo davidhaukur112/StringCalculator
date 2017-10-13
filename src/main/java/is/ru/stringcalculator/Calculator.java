@@ -8,7 +8,7 @@ public class Calculator{
 		if(text.equals("")){
 			return 0;
 		}
-		
+
 		// If the string contains the newline symbol
 		if(text.contains("\n")){
 			// We run this method to change the newLines to commas.
@@ -18,6 +18,13 @@ public class Calculator{
 
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
+			
+			// Here I check if the array
+			// contains negative numbers
+			if(text.contains("-")){
+				negativeError(numbers);
+			}
+
 			return sumUp(numbers);
 		}
 
@@ -62,6 +69,61 @@ public class Calculator{
 		String withoutNewLines = new String(characterArray);
 		// A valid string is returned
 		return withoutNewLines;
+	}
+
+	// This method finds all negative numbers in the string,
+	// and throws an appropriate exception.
+	private static void negativeError(String [] numbers){
+		
+		int length = numbers.length;
+		int [] negativeArray = new int [length];
+		String stringVal;
+		int intVal;
+		int index = 0;
+
+		for(int i=0; i<numbers.length; i++){
+			stringVal = numbers[i];
+			intVal = toInt(stringVal);
+			if(intVal < 0){
+				negativeArray[index] = intVal;
+				index = index + 1; 
+			}
+		}
+		// The errorMessage is created and an exception is thrown!
+		String errorMessage = createErrorMessage(negativeArray);
+		throw new IllegalArgumentException(errorMessage);
+	}
+
+	private static String createErrorMessage(int [] negNumbers){
+		
+		// To create the string I use the Stringbuilder
+		StringBuilder message = new StringBuilder();
+		message.append("Negatives not allowed: ");
+	
+		int length = negNumbers.length;
+		
+		boolean lastZero = false;
+		// This checks the last index of the array.
+		// If the last index contains zero then it is
+		// safe to check the i+1 index of negNumbers.
+		// (I do this to remove the comma behind the last negative number).
+		if(negNumbers[length-1] == 0){
+			lastZero = true;
+		}
+	
+		for(int i=0; i<length; i++){
+	
+			if(negNumbers[i] == 0){
+				break;
+			}
+			message.append(Integer.toString(negNumbers[i]));
+			if(lastZero == true && negNumbers[i+1] == 0){
+				break;
+			}
+			message.append(",");
+		}
+		String negativeWarning = message.toString();
+		return negativeWarning;
 	}
 
 }

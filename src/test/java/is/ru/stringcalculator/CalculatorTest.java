@@ -85,7 +85,7 @@ public class CalculatorTest{
 	}
 
 
-	//   *** STEP 2 ***	
+	//   *** STEP 3 ***	
 
 	// Allow the Add method to handle new lines between numbers (instead of commas).
 	
@@ -124,6 +124,20 @@ public class CalculatorTest{
 		assertEquals(0, Calculator.add("0\n0\n0\n0\n0\n0"));
 	}
 
+	//   *** STEP 4 ***
+	
+	// Calling Add with a negative number will throw an exception "Negatives not allowed: "
+	// listing all negative numbers that were in the list of numbers.
 
+	// i   Example "-1,2" throws "Negatives not allowed: -1"
+
+	@Test
+    public void negNumbers() {
+        try {
+            Calculator.add("-1,2");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -1");
+        }
+    }
 	
 }
