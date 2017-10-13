@@ -132,12 +132,49 @@ public class CalculatorTest{
 	// i   Example "-1,2" throws "Negatives not allowed: -1"
 
 	@Test
-    public void negNumbers() {
+    public void negativePositive() {
         try {
             Calculator.add("-1,2");
         } catch (IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "Negatives not allowed: -1");
         }
-    }
-	
+	}
+
+	@Test
+    public void positiveNegative() {
+        try {
+            Calculator.add("1,-2");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -2");
+        }
+	}
+
+	@Test
+    public void twoNegatives() {
+        try {
+            Calculator.add("-7,-17");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -7,-17");
+        }
+	}
+
+	@Test
+    public void zeroNegative() {
+        try {
+            Calculator.add("-0,-18");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -18");
+        }
+	}
+
+	@Test
+    public void negativeZero() {
+        try {
+            Calculator.add("-12,-0");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -12");
+        }
+	}
+
+
 }

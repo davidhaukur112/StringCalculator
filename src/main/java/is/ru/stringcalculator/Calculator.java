@@ -16,14 +16,18 @@ public class Calculator{
 			text = tempString;
 		}
 
+		
+		// If the string contains a minus symbol
+		if(text.contains("-")){
+			String numbers[] = text.split(",");
+			// error!
+			negativeError(numbers);
+		}
+		
+
+		// Multiple Numbers
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
-			
-			// Here I check if the array
-			// contains negative numbers
-			if(text.contains("-")){
-				negativeError(numbers);
-			}
 
 			return sumUp(numbers);
 		}
@@ -110,7 +114,22 @@ public class Calculator{
 		if(negNumbers[length-1] == 0){
 			lastZero = true;
 		}
-	
+
+		// If the last number is not zero
+		if(lastZero == false){
+			
+			for(int i=0; i<length; i++){
+				message.append(Integer.toString(negNumbers[i]));
+				
+				// Here it is ok to return the string
+				if(i == length-1){
+					String negativeWarning = message.toString();
+					return negativeWarning;
+				}
+				message.append(",");
+			}
+		}
+
 		for(int i=0; i<length; i++){
 	
 			if(negNumbers[i] == 0){
@@ -120,7 +139,10 @@ public class Calculator{
 			if(lastZero == true && negNumbers[i+1] == 0){
 				break;
 			}
-			message.append(",");
+			else{
+				message.append(",");
+			}
+			
 		}
 		String negativeWarning = message.toString();
 		return negativeWarning;
