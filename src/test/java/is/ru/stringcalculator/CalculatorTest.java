@@ -176,5 +176,80 @@ public class CalculatorTest{
         }
 	}
 
+	// ii   Example "2,-4,3,-5" throws "Negatives not allowed: -4,-5"
+
+	// Some additional negative tests.
+
+	@Test
+    public void moreNegativeTestsOne() {
+        try {
+            Calculator.add("2,-4,3,-5");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
+        }
+	}
+
+	@Test
+    public void moreNegativeTestsTwo() {
+        try {
+            Calculator.add("1,2,3,4,5,6,7,8,-9");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -9");
+        }
+	}
+
+	@Test
+    public void moreNegativeTestsThree() {
+        try {
+            Calculator.add("-1,2,3,4,5,6,7,8,9");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -1");
+        }
+	}
+
+	@Test
+    public void moreNegativeTestsFour() {
+        try {
+            Calculator.add("-1,-2,-3,-4,-5,-6,-7,-8,-9");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -1,-2,-3,-4,-5,-6,-7,-8,-9");
+        }
+	}
+
+	@Test
+    public void moreNegativeTestsFive() {
+        try {
+            Calculator.add("-1,2,-3,4,-5,6,-7,8,-9");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -1,-3,-5,-7,-9");
+        }
+	}
+	
+	@Test
+    public void moreNegativeTestsSix() {
+        try {
+            Calculator.add("1,-2,3,-4,5,-6,7,-8,9");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -2,-4,-6,-8");
+        }
+	}
+
+	@Test
+    public void moreNegativeTestsSeven() {
+        try {
+            Calculator.add("-1,2,3,4,5,6,7,8,-9");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -1,-9");
+        }
+	}
+
+	@Test
+    public void moreNegativeTestsEight() {
+        try {
+            Calculator.add("-42");
+        } catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Negatives not allowed: -42");
+        }
+	}
 
 }

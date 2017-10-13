@@ -16,7 +16,6 @@ public class Calculator{
 			text = tempString;
 		}
 
-		
 		// If the string contains a minus symbol
 		if(text.contains("-")){
 			String numbers[] = text.split(",");
@@ -24,7 +23,6 @@ public class Calculator{
 			negativeError(numbers);
 		}
 		
-
 		// Multiple Numbers
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
@@ -108,8 +106,8 @@ public class Calculator{
 		
 		boolean lastZero = false;
 		// This checks the last index of the array.
-		// If the last index contains zero then it is
-		// safe to check the i+1 index of negNumbers.
+		// If the last index contains zero (initialization of the array)
+		// then it is safe to check the i+1 index of negNumbers.
 		// (I do this to remove the comma behind the last negative number).
 		if(negNumbers[length-1] == 0){
 			lastZero = true;
