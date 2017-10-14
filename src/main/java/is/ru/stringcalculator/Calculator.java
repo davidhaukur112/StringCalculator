@@ -23,12 +23,20 @@ public class Calculator{
 			negativeError(numbers);
 		}
 		
+		// Here I check if a delimiter is present
+		if(text.contains("//")){
+			// delimiterOperation returns a String array of numbers
+			String numbers[] = delimiterOperation(text);
+			return sumUp(numbers);
+		}
+
 		// Multiple Numbers.
 	    if(text.contains(",")){
 			String numbers[] = text.split(",");
 
 			return sumUp(numbers);
 		}
+
 		// A single number as input
 		// should be returned without changes.
 		return toInt(text);
@@ -161,6 +169,15 @@ public class Calculator{
 		}
 		String negativeWarning = message.toString();
 		return negativeWarning;
+	}
+
+	private static String[] delimiterOperation(String text){
+		// The delimiter symbol is extracted.
+		String delSymb = Character.toString(text.charAt(2));
+		// The delimiter itself is removed.
+		String result = text.substring(4);
+		String numbers[] = result.split(delSymb);
+		return numbers;
 	}
 
 }

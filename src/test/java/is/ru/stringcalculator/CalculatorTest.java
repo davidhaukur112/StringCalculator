@@ -336,4 +336,11 @@ public class CalculatorTest{
 		assertEquals(55, Calculator.add("9999,1,2,3,4,5,6,9999,7,8,9,10,9999"));
 	}
 
+	//   *** STEP 6 ***
+	
+	// i   To change the delimiter, the beginning of the string will contain a separate line that
+	//     looks like this: "//[delimiter]\n[numbers]"
+	
+	
+
 }
