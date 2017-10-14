@@ -338,9 +338,42 @@ public class CalculatorTest{
 
 	//   *** STEP 6 ***
 	
-	// i   To change the delimiter, the beginning of the string will contain a separate line that
-	//     looks like this: "//[delimiter]\n[numbers]"
+	// i   
+	// To change the delimiter, the beginning of the string will contain a separate line that
+	// looks like this: "//[delimiter]\n[numbers]"
+
+	// ii  
+	// Example: "//;\n1;2" should return 3 (the delimiter is ;)
 	
+	@Test
+    public void delimiterTestOne() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
+	@Test
+    public void delimiterTestTwo() {
+		assertEquals(100, Calculator.add("//;\n100"));
+	}
+
+	@Test
+    public void delimiterTestThree() {
+		assertEquals(55, Calculator.add("//;\n1;2;3;4;5;6;7;8;9;10"));
+	}
+
+	@Test
+    public void delimiterTestFour() {
+		assertEquals(0, Calculator.add("//;\n0"));
+	}
+
+	@Test
+    public void delimiterTestFive() {
+		assertEquals(101, Calculator.add("//;\n0;101"));
+	}
+
+	@Test
+    public void delimiterTestSix() {
+		assertEquals(101, Calculator.add("//;\n101;0"));
+	}
 	
 
 }
