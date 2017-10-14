@@ -4,30 +4,31 @@ public class Calculator{
 
 	public static int add(String text){
 
-		// If the string is empty, zero is returned
+		// If the string is empty, zero is returned.
 		if(text.equals("")){
 			return 0;
 		}
 
-		// If the string contains the newline symbol
-		if(text.contains("\n")){
-			// We run this method to change the newLines to commas.
-			String tempString = changeNewLinesToCommas(text);
-			text = tempString;
-		}
-
-		// If the string contains a minus symbol
+		// If the string contains a minus symbol.
 		if(text.contains("-")){
 			String numbers[] = text.split(",");
 			// error!
 			negativeError(numbers);
 		}
-		
-		// Here I check if a delimiter is present
+
+		// Here I check if a delimiter is present.
 		if(text.contains("//")){
-			// delimiterOperation returns a String array of numbers
+			// The delimiterOperation method returns a String array of numbers.
 			String numbers[] = delimiterOperation(text);
+			
 			return sumUp(numbers);
+		}
+
+		// If the string contains the newline symbol.
+		if(text.contains("\n")){
+			// We run this method to change the newLines to commas.
+			String withoutNewLines = changeNewLinesToCommas(text);
+			text = withoutNewLines;
 		}
 
 		// Multiple Numbers.
@@ -37,13 +38,11 @@ public class Calculator{
 			return sumUp(numbers);
 		}
 
-		// A single number as input
-		// should be returned without changes.
+		// A single number as input should be returned without changes.
 		return toInt(text);
 	}
 
-	// This method takes in a String number 
-	// and returns an Integer.
+	// This method takes in a String number and returns an Integer.
 	private static int toInt(String number){
 		return Integer.parseInt(number);
 	}
@@ -108,6 +107,7 @@ public class Calculator{
 		int intVal;
 		int index = 0;
 
+		// Searching for negative values
 		for(int i=0; i<numbers.length; i++){
 			stringVal = numbers[i];
 			intVal = toInt(stringVal);
@@ -144,7 +144,7 @@ public class Calculator{
 			for(int i=0; i<length; i++){
 				message.append(Integer.toString(negNumbers[i]));
 				
-				// Here it is ok to return the string
+				// Here it is ok to return the message
 				if(i == length-1){
 					String negativeWarning = message.toString();
 					return negativeWarning;
@@ -152,14 +152,15 @@ public class Calculator{
 				message.append(",");
 			}
 		}
-
+		
+		// If the last number is zero
 		for(int i=0; i<length; i++){
 	
 			if(negNumbers[i] == 0){
 				break;
 			}
 			message.append(Integer.toString(negNumbers[i]));
-			if(lastZero == true && negNumbers[i+1] == 0){
+			if(negNumbers[i+1] == 0){
 				break;
 			}
 			else{
@@ -176,8 +177,9 @@ public class Calculator{
 		String delSymb = Character.toString(text.charAt(2));
 		// The delimiter itself is removed.
 		String result = text.substring(4);
-		String numbers[] = result.split(delSymb);
+		// The String is split on the new delimiter.
+		String numbers[] = result.split("[" + delSymb + "]");
+		
 		return numbers;
 	}
-
 }

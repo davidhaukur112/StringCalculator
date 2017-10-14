@@ -345,6 +345,8 @@ public class CalculatorTest{
 	// ii  
 	// Example: "//;\n1;2" should return 3 (the delimiter is ;)
 	
+	//----------------------------------------------------------------------------------------------
+
 	@Test
     public void delimiterTestOne() {
 		assertEquals(3, Calculator.add("//;\n1;2"));
@@ -373,6 +375,111 @@ public class CalculatorTest{
 	@Test
     public void delimiterTestSix() {
 		assertEquals(101, Calculator.add("//;\n101;0"));
+	}
+
+	// iii
+	// Different types of delimiters are tested below.
+
+	// Multiplication symbol is tested
+
+	//----------------------------------------------------------------------------------------------
+
+	@Test
+    public void multiplicationSymbolDelimiterTestOne() {
+		assertEquals(3, Calculator.add("//*\n1*2"));
+	}
+
+	@Test
+    public void multiplicationSymbolDelimiterTestTwo() {
+		assertEquals(100, Calculator.add("//*\n100"));
+	}
+
+	@Test
+    public void multiplicationSymbolDelimiterTestThree() {
+		assertEquals(55, Calculator.add("//*\n1*2*3*4*5*6*7*8*9*10"));
+	}
+
+	@Test
+    public void multiplicationSymbolDelimiterTestFour() {
+		assertEquals(0, Calculator.add("//*\n0"));
+	}
+
+	@Test
+    public void multiplicationSymbolDelimiterTestFive() {
+		assertEquals(101, Calculator.add("//*\n0*101"));
+	}
+
+	@Test
+    public void multiplicationSymbolDelimiterTestSix() {
+		assertEquals(101, Calculator.add("//*\n101*0"));
+	}
+
+	// The letter x is tested
+	
+	//----------------------------------------------------------------------------------------------
+
+	@Test
+    public void xDelimiterTestOne() {
+		assertEquals(3, Calculator.add("//x\n1x2"));
+	}
+
+	@Test
+    public void xDelimiterTestTwo() {
+		assertEquals(100, Calculator.add("//x\n100"));
+	}
+
+	@Test
+    public void xDelimiterTestThree() {
+		assertEquals(55, Calculator.add("//x\n1x2x3x4x5x6x7x8x9x10"));
+	}
+
+	@Test
+    public void xDelimiterTestFour() {
+		assertEquals(0, Calculator.add("//x\n0"));
+	}
+
+	@Test
+    public void xDelimiterTestFive() {
+		assertEquals(101, Calculator.add("//x\n0x101"));
+	}
+
+	@Test
+    public void xDelimiterTestSix() {
+		assertEquals(101, Calculator.add("//x\n101x0"));
+	}
+
+	// The division symbol is tested
+	
+	//----------------------------------------------------------------------------------------------
+
+	@Test
+    public void divisionDelimiterTestOne() {
+		assertEquals(3, Calculator.add("///\n1/2"));
+	}
+
+	@Test
+    public void divisionDelimiterTestTwo() {
+		assertEquals(100, Calculator.add("///\n100"));
+	}
+
+	@Test
+    public void divisionDelimiterTestThree() {
+		assertEquals(55, Calculator.add("///\n1/2/3/4/5/6/7/8/9/10"));
+	}
+
+	@Test
+    public void divisionDelimiterTestFour() {
+		assertEquals(0, Calculator.add("///\n0"));
+	}
+
+	@Test
+    public void divisionDelimiterTestFive() {
+		assertEquals(101, Calculator.add("///\n0/101"));
+	}
+
+	@Test
+    public void divisionDelimiterTestSix() {
+		assertEquals(101, Calculator.add("///\n101/0"));
 	}
 	
 
